@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy2 Experiment Builder (v1.81.03), Thu 11 Dec 2014 02:36:16 PM CET
+This experiment was created using PsychoPy2 Experiment Builder (v1.81.03), Thu 11 Dec 2014 03:11:45 PM CET
 If you publish work using this script please cite the relevant PsychoPy publications
   Peirce, JW (2007) PsychoPy - Psychophysics software in Python. Journal of Neuroscience Methods, 162(1-2), 8-13.
   Peirce, JW (2009) Generating stimuli for neuroscience using PsychoPy. Frontiers in Neuroinformatics, 2:10. doi: 10.3389/neuro.11.010.2008
@@ -92,6 +92,15 @@ target_left = visual.ImageStim(win=win, name='target_left',
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
 
+# Initialize components for Routine "left_feedback"
+left_feedbackClock = core.Clock()
+feedback_left = visual.ImageStim(win=win, name='feedback_left',
+    image=u'../stimuli/neutral_after.jpg', mask=None,
+    ori=0, pos=[0, 0], size=[0.5, 0.5],
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    flipHoriz=False, flipVert=False,
+    texRes=128, interpolate=True, depth=0.0)
+
 # Initialize components for Routine "right"
 rightClock = core.Clock()
 right_base = visual.ImageStim(win=win, name='right_base',
@@ -111,6 +120,15 @@ side_right = visual.TextStim(win=win, ori=0, name='side_right',
 right_targetClock = core.Clock()
 target_right = visual.ImageStim(win=win, name='target_right',
     image='sin', mask=None,
+    ori=0, pos=[0, 0], size=[0.5, 0.5],
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    flipHoriz=False, flipVert=False,
+    texRes=128, interpolate=True, depth=0.0)
+
+# Initialize components for Routine "right_feedback"
+right_feedbackClock = core.Clock()
+feedback_right = visual.ImageStim(win=win, name='feedback_right',
+    image=u'../stimuli/neutral_after.jpg', mask=None,
     ori=0, pos=[0, 0], size=[0.5, 0.5],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
@@ -392,6 +410,59 @@ for thisTrial in trials:
         for thisComponent in left_targetComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
+        
+        #------Prepare to start Routine "left_feedback"-------
+        t = 0
+        left_feedbackClock.reset()  # clock 
+        frameN = -1
+        routineTimer.add(1.000000)
+        # update component parameters for each repeat
+        # keep track of which components have finished
+        left_feedbackComponents = []
+        left_feedbackComponents.append(feedback_left)
+        for thisComponent in left_feedbackComponents:
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        
+        #-------Start Routine "left_feedback"-------
+        continueRoutine = True
+        while continueRoutine and routineTimer.getTime() > 0:
+            # get current time
+            t = left_feedbackClock.getTime()
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *feedback_left* updates
+            if t >= 0.0 and feedback_left.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                feedback_left.tStart = t  # underestimates by a little under one frame
+                feedback_left.frameNStart = frameN  # exact frame index
+                feedback_left.setAutoDraw(True)
+            if feedback_left.status == STARTED and t >= (0.0 + (1.0-win.monitorFramePeriod*0.75)): #most of one frame period left
+                feedback_left.setAutoDraw(False)
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                routineTimer.reset()  # if we abort early the non-slip timer needs reset
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in left_feedbackComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # check for quit (the Esc key)
+            if endExpNow or event.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        #-------Ending Routine "left_feedback"-------
+        for thisComponent in left_feedbackComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
         thisExp.nextEntry()
         
     # completed repsLeft repeats of 'leftBlock'
@@ -537,6 +608,59 @@ for thisTrial in trials:
         
         #-------Ending Routine "right_target"-------
         for thisComponent in right_targetComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        
+        #------Prepare to start Routine "right_feedback"-------
+        t = 0
+        right_feedbackClock.reset()  # clock 
+        frameN = -1
+        routineTimer.add(1.000000)
+        # update component parameters for each repeat
+        # keep track of which components have finished
+        right_feedbackComponents = []
+        right_feedbackComponents.append(feedback_right)
+        for thisComponent in right_feedbackComponents:
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        
+        #-------Start Routine "right_feedback"-------
+        continueRoutine = True
+        while continueRoutine and routineTimer.getTime() > 0:
+            # get current time
+            t = right_feedbackClock.getTime()
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *feedback_right* updates
+            if t >= 0.0 and feedback_right.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                feedback_right.tStart = t  # underestimates by a little under one frame
+                feedback_right.frameNStart = frameN  # exact frame index
+                feedback_right.setAutoDraw(True)
+            if feedback_right.status == STARTED and t >= (0.0 + (1.0-win.monitorFramePeriod*0.75)): #most of one frame period left
+                feedback_right.setAutoDraw(False)
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                routineTimer.reset()  # if we abort early the non-slip timer needs reset
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in right_feedbackComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # check for quit (the Esc key)
+            if endExpNow or event.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        #-------Ending Routine "right_feedback"-------
+        for thisComponent in right_feedbackComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
         thisExp.nextEntry()
