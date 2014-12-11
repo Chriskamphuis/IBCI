@@ -89,6 +89,14 @@
         <Param name="font" val="Arial" valType="str" updates="constant"/>
         <Param name="letterHeight" val="0.1" valType="code" updates="constant"/>
       </TextComponent>
+      <CodeComponent name="code_3">
+        <Param name="Begin Experiment" val="" valType="extendedCode" updates="constant"/>
+        <Param name="name" val="code_3" valType="code" updates="None"/>
+        <Param name="Begin Routine" val="targets = ['color', 'size', 'shift', 'shift2']&#10;index = random.randint(0, 3)&#10;&#10;imageTargetPath = '../stimuli/right' + targets[index] + '.jpg'" valType="extendedCode" updates="constant"/>
+        <Param name="End Routine" val="" valType="extendedCode" updates="constant"/>
+        <Param name="End Experiment" val="" valType="extendedCode" updates="constant"/>
+        <Param name="Each Frame" val="" valType="extendedCode" updates="constant"/>
+      </CodeComponent>
     </Routine>
     <Routine name="left_target">
       <ImageComponent name="target_left">
@@ -157,6 +165,14 @@
         <Param name="font" val="Arial" valType="str" updates="constant"/>
         <Param name="letterHeight" val="0.1" valType="code" updates="constant"/>
       </TextComponent>
+      <CodeComponent name="code_2">
+        <Param name="Begin Experiment" val="" valType="extendedCode" updates="constant"/>
+        <Param name="name" val="code_2" valType="code" updates="None"/>
+        <Param name="Begin Routine" val="targets = ['color', 'size', 'shift', 'shift2']&#10;index = random.randint(0, 3)&#10;&#10;imageTargetPath = '../stimuli/left' + targets[index] + '.jpg'" valType="extendedCode" updates="constant"/>
+        <Param name="End Routine" val="" valType="extendedCode" updates="constant"/>
+        <Param name="End Experiment" val="" valType="extendedCode" updates="constant"/>
+        <Param name="Each Frame" val="" valType="extendedCode" updates="constant"/>
+      </CodeComponent>
     </Routine>
     <Routine name="select">
       <CodeComponent name="code">
@@ -217,19 +233,7 @@
       <Param name="Selected rows" val="" valType="str" updates="None"/>
     </LoopInitiator>
     <Routine name="left"/>
-    <LoopInitiator loopType="TrialHandler" name="random_left">
-      <Param name="conditionsFile" val="left_targets.csv" valType="str" updates="None"/>
-      <Param name="name" val="random_left" valType="code" updates="None"/>
-      <Param name="isTrials" val="True" valType="bool" updates="None"/>
-      <Param name="random seed" val="" valType="code" updates="None"/>
-      <Param name="loopType" val="fullRandom" valType="str" updates="None"/>
-      <Param name="nReps" val="1" valType="code" updates="None"/>
-      <Param name="endPoints" val="[0, 1]" valType="num" updates="None"/>
-      <Param name="conditions" val="[{'imageTargetPath': u'../stimuli/leftcolor.jpg'}, {'imageTargetPath': u'../stimuli/leftsize.jpg'}, {'imageTargetPath': u'../stimuli/leftshift.jpg'}, {'imageTargetPath': u'../stimuli/leftshift2.jpg'}]" valType="str" updates="None"/>
-      <Param name="Selected rows" val="" valType="code" updates="None"/>
-    </LoopInitiator>
     <Routine name="left_target"/>
-    <LoopTerminator name="random_left"/>
     <LoopTerminator name="leftBlock"/>
     <LoopInitiator loopType="TrialHandler" name="rightBlock">
       <Param name="conditionsFile" val="" valType="str" updates="None"/>
@@ -243,19 +247,7 @@
       <Param name="Selected rows" val="" valType="str" updates="None"/>
     </LoopInitiator>
     <Routine name="right"/>
-    <LoopInitiator loopType="TrialHandler" name="random_right">
-      <Param name="conditionsFile" val="right_targets.csv" valType="str" updates="None"/>
-      <Param name="name" val="random_right" valType="code" updates="None"/>
-      <Param name="isTrials" val="True" valType="bool" updates="None"/>
-      <Param name="random seed" val="" valType="code" updates="None"/>
-      <Param name="loopType" val="fullRandom" valType="str" updates="None"/>
-      <Param name="nReps" val="1" valType="code" updates="None"/>
-      <Param name="endPoints" val="[0, 1]" valType="num" updates="None"/>
-      <Param name="conditions" val="[{'imageTargetPath': u'../stimuli/rightcolor.jpg'}, {'imageTargetPath': u'../stimuli/rightsize.jpg'}, {'imageTargetPath': u'../stimuli/rightshift.jpg'}, {'imageTargetPath': u'../stimuli/rightshift2.jpg'}]" valType="str" updates="None"/>
-      <Param name="Selected rows" val="" valType="code" updates="None"/>
-    </LoopInitiator>
     <Routine name="right_target"/>
-    <LoopTerminator name="random_right"/>
     <LoopTerminator name="rightBlock"/>
     <LoopTerminator name="trials"/>
   </Flow>
