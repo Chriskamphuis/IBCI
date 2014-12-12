@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy2 Experiment Builder (v1.81.03), Thu 11 Dec 2014 03:52:31 PM CET
+This experiment was created using PsychoPy2 Experiment Builder (v1.81.03), Fri 12 Dec 2014 02:03:26 PM CET
 If you publish work using this script please cite the relevant PsychoPy publications
   Peirce, JW (2007) PsychoPy - Psychophysics software in Python. Journal of Neuroscience Methods, 162(1-2), 8-13.
   Peirce, JW (2009) Generating stimuli for neuroscience using PsychoPy. Frontiers in Neuroinformatics, 2:10. doi: 10.3389/neuro.11.010.2008
@@ -59,10 +59,73 @@ else:
 # Initialize components for Routine "instructions"
 instructionsClock = core.Clock()
 welcome_text = visual.TextStim(win=win, ori=0, name='welcome_text',
-    text='DOE DINGEN\n\nEN DOE ZE GOED GVD',    font='Arial',
+    text='DOE DINGEN',    font='Arial',
     pos=[0, 0], height=0.1, wrapWidth=None,
     color='white', colorSpace='rgb', opacity=1,
     depth=0.0)
+# buffer_bci Handling the requered imports
+import sys
+import time
+sys.path.append("../../Practical/buffer_bci/dataAcq/buffer/python/")
+from FieldTrip import Client, Event
+from time import sleep
+
+# buffer_bci Connecting to the buffer.
+host = 'localhost'
+port = 1972
+ftc = Client()
+hdr = None;
+while hdr is None :
+    print 'Trying to connect to buffer on %s:%i ...'%(host,port)
+    try:
+        ftc.connect(host, port)
+        print '\nConnected - trying to read header...'
+        hdr = ftc.getHeader()
+    except IOError:
+        pass
+    if hdr is None:
+        print 'Invalid Header... waiting'
+        time.sleep(1)
+    else:
+        print hdr
+        print hdr.labels
+# buffer_bci Defining a usefull helper functions
+
+def sendEvent(eventType, eventValue):
+    e = Event()
+    e.type = eventType
+    e.value = eventValue
+    ftc.putEvents(e)
+    
+procnEvents=0
+def waitnewevents(evtype, timeout_ms=1000,verbose = True):      
+    """Function that blocks until a certain type of event is recieved. evttype defines what
+    event termintes the block.  Only the first such matching event is returned
+    """    
+    global ftc, nEvents, nSamples
+    global procnEvents
+    start = time.time()
+    nEvents,nSamples=ftc.poll()
+    elapsed_ms = 0
+    
+    if verbose:
+        print "Waiting for event " + str(evtype) + " with timeout_ms " + str(timeout_ms)
+    
+    evt=None
+    while elapsed_ms < timeout_ms and evt is None:
+        nSamples, nEvents2 = ftc.wait(-1,procnEvents, timeout_ms - elapsed_ms)     
+
+        if nEvents != nEvents2: # new events to process
+            procnEvents = nEvents2
+            evts = ftc.getEvents((nEvents, nEvents2 -1))
+            for ev in evts:
+                if ev.type == evtype:
+                    evt = ev
+                    break
+        
+        elapsed_ms = (time.time() - start)*1000
+        nEvents = nEvents2            
+    return evt
 
 # Initialize components for Routine "select"
 selectClock = core.Clock()
@@ -144,6 +207,7 @@ instructionsClock.reset()  # clock
 frameN = -1
 routineTimer.add(5.000000)
 # update component parameters for each repeat
+
 # keep track of which components have finished
 instructionsComponents = []
 instructionsComponents.append(welcome_text)
@@ -168,6 +232,7 @@ while continueRoutine and routineTimer.getTime() > 0:
     if welcome_text.status == STARTED and t >= (0.0 + (5-win.monitorFramePeriod*0.75)): #most of one frame period left
         welcome_text.setAutoDraw(False)
     
+    
     # check if all components have finished
     if not continueRoutine:  # a component has requested a forced-end of Routine
         routineTimer.reset()  # if we abort early the non-slip timer needs reset
@@ -190,6 +255,7 @@ while continueRoutine and routineTimer.getTime() > 0:
 for thisComponent in instructionsComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
+
 
 # set up handler to look after randomisation of conditions etc
 trials = data.TrialHandler(nReps=40, method='sequential', 
@@ -670,6 +736,7 @@ for thisTrial in trials:
     thisExp.nextEntry()
     
 # completed 40 repeats of 'trials'
+
 
 
 
