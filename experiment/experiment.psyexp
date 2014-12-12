@@ -43,7 +43,7 @@
         <Param name="stopType" val="duration (s)" valType="str" updates="None"/>
         <Param name="startVal" val="0.0" valType="code" updates="None"/>
         <Param name="image" val="$imageTargetPath" valType="str" updates="set every repeat"/>
-        <Param name="size" val="[0.5, 0.5]" valType="code" updates="constant"/>
+        <Param name="size" val="[2,2]" valType="code" updates="constant"/>
       </ImageComponent>
     </Routine>
     <Routine name="right">
@@ -67,7 +67,7 @@
         <Param name="stopType" val="duration (s)" valType="str" updates="None"/>
         <Param name="startVal" val="0.0" valType="code" updates="None"/>
         <Param name="image" val="../stimuli/neutral.jpg" valType="str" updates="constant"/>
-        <Param name="size" val="[0.5, 0.5]" valType="code" updates="constant"/>
+        <Param name="size" val="[2,2]" valType="code" updates="constant"/>
       </ImageComponent>
       <TextComponent name="side_right">
         <Param name="opacity" val="1" valType="code" updates="constant"/>
@@ -119,7 +119,7 @@
         <Param name="stopType" val="duration (s)" valType="str" updates="None"/>
         <Param name="startVal" val="0.0" valType="code" updates="None"/>
         <Param name="image" val="../stimuli/neutral_after.jpg" valType="str" updates="constant"/>
-        <Param name="size" val="[0.5, 0.5]" valType="code" updates="constant"/>
+        <Param name="size" val="[2,2]" valType="code" updates="constant"/>
       </ImageComponent>
     </Routine>
     <Routine name="right_feedback">
@@ -143,7 +143,7 @@
         <Param name="stopType" val="duration (s)" valType="str" updates="None"/>
         <Param name="startVal" val="0.0" valType="code" updates="None"/>
         <Param name="image" val="../stimuli/neutral_after.jpg" valType="str" updates="constant"/>
-        <Param name="size" val="[0.5, 0.5]" valType="code" updates="constant"/>
+        <Param name="size" val="[2,2]" valType="code" updates="constant"/>
       </ImageComponent>
     </Routine>
     <Routine name="left_target">
@@ -167,7 +167,7 @@
         <Param name="stopType" val="duration (s)" valType="str" updates="None"/>
         <Param name="startVal" val="0.0" valType="code" updates="None"/>
         <Param name="image" val="$imageTargetPath" valType="str" updates="set every repeat"/>
-        <Param name="size" val="[0.5, 0.5]" valType="code" updates="constant"/>
+        <Param name="size" val="[2,2]" valType="code" updates="constant"/>
       </ImageComponent>
     </Routine>
     <Routine name="left">
@@ -191,7 +191,7 @@
         <Param name="stopType" val="time (s)" valType="str" updates="None"/>
         <Param name="startVal" val="0" valType="code" updates="None"/>
         <Param name="image" val="../stimuli/neutral.jpg" valType="str" updates="constant"/>
-        <Param name="size" val="[0.5, 0.5]" valType="code" updates="constant"/>
+        <Param name="size" val="[2,2]" valType="code" updates="constant"/>
       </ImageComponent>
       <TextComponent name="side_left">
         <Param name="opacity" val="1" valType="code" updates="constant"/>

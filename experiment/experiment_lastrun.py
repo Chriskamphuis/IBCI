@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy2 Experiment Builder (v1.81.03), Fri 12 Dec 2014 02:03:26 PM CET
+This experiment was created using PsychoPy2 Experiment Builder (v1.81.03), Fri 12 Dec 2014 02:54:05 PM CET
 If you publish work using this script please cite the relevant PsychoPy publications
   Peirce, JW (2007) PsychoPy - Psychophysics software in Python. Journal of Neuroscience Methods, 162(1-2), 8-13.
   Peirce, JW (2009) Generating stimuli for neuroscience using PsychoPy. Frontiers in Neuroinformatics, 2:10. doi: 10.3389/neuro.11.010.2008
@@ -134,8 +134,8 @@ selectClock = core.Clock()
 # Initialize components for Routine "left"
 leftClock = core.Clock()
 left_neutral = visual.ImageStim(win=win, name='left_neutral',
-    image='../stimuli/neutral.jpg', mask=None,
-    ori=0, pos=[0, 0], size=[0.5, 0.5],
+    image=u'../stimuli/neutral.jpg', mask=None,
+    ori=0, pos=[0, 0], size=[2,2],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
@@ -150,7 +150,7 @@ side_left = visual.TextStim(win=win, ori=0, name='side_left',
 left_targetClock = core.Clock()
 target_left = visual.ImageStim(win=win, name='target_left',
     image='sin', mask=None,
-    ori=0, pos=[0, 0], size=[0.5, 0.5],
+    ori=0, pos=[0, 0], size=[2,2],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
@@ -158,8 +158,8 @@ target_left = visual.ImageStim(win=win, name='target_left',
 # Initialize components for Routine "left_feedback"
 left_feedbackClock = core.Clock()
 feedback_left = visual.ImageStim(win=win, name='feedback_left',
-    image='../stimuli/neutral_after.jpg', mask=None,
-    ori=0, pos=[0, 0], size=[0.5, 0.5],
+    image=u'../stimuli/neutral_after.jpg', mask=None,
+    ori=0, pos=[0, 0], size=[2,2],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
@@ -167,8 +167,8 @@ feedback_left = visual.ImageStim(win=win, name='feedback_left',
 # Initialize components for Routine "right"
 rightClock = core.Clock()
 right_base = visual.ImageStim(win=win, name='right_base',
-    image='../stimuli/neutral.jpg', mask=None,
-    ori=0, pos=[0, 0], size=[0.5, 0.5],
+    image=u'../stimuli/neutral.jpg', mask=None,
+    ori=0, pos=[0, 0], size=[2,2],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
@@ -183,7 +183,7 @@ side_right = visual.TextStim(win=win, ori=0, name='side_right',
 right_targetClock = core.Clock()
 target_right = visual.ImageStim(win=win, name='target_right',
     image='sin', mask=None,
-    ori=0, pos=[0, 0], size=[0.5, 0.5],
+    ori=0, pos=[0, 0], size=[2,2],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
@@ -191,8 +191,8 @@ target_right = visual.ImageStim(win=win, name='target_right',
 # Initialize components for Routine "right_feedback"
 right_feedbackClock = core.Clock()
 feedback_right = visual.ImageStim(win=win, name='feedback_right',
-    image='../stimuli/neutral_after.jpg', mask=None,
-    ori=0, pos=[0, 0], size=[0.5, 0.5],
+    image=u'../stimuli/neutral_after.jpg', mask=None,
+    ori=0, pos=[0, 0], size=[2,2],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
