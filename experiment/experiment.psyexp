@@ -170,6 +170,38 @@
         <Param name="size" val="[0.5, 0.5]" valType="code" updates="constant"/>
       </ImageComponent>
     </Routine>
+    <Routine name="instructions">
+      <TextComponent name="welcome_text">
+        <Param name="opacity" val="1" valType="code" updates="constant"/>
+        <Param name="colorSpace" val="rgb" valType="str" updates="constant"/>
+        <Param name="name" val="welcome_text" valType="code" updates="None"/>
+        <Param name="wrapWidth" val="" valType="code" updates="constant"/>
+        <Param name="color" val="white" valType="str" updates="constant"/>
+        <Param name="text" val="DOE DINGEN" valType="str" updates="constant"/>
+        <Param name="stopVal" val="5" valType="code" updates="constant"/>
+        <Param name="durationEstim" val="" valType="code" updates="None"/>
+        <Param name="pos" val="[0, 0]" valType="code" updates="constant"/>
+        <Param name="flip" val="" valType="str" updates="constant"/>
+        <Param name="startEstim" val="" valType="code" updates="None"/>
+        <Param name="units" val="from exp settings" valType="str" updates="None"/>
+        <Param name="startType" val="time (s)" valType="str" updates="None"/>
+        <Param name="ori" val="0" valType="code" updates="constant"/>
+        <Param name="stopType" val="duration (s)" valType="str" updates="None"/>
+        <Param name="startVal" val="0.0" valType="code" updates="None"/>
+        <Param name="font" val="Arial" valType="str" updates="constant"/>
+        <Param name="letterHeight" val="0.1" valType="code" updates="constant"/>
+      </TextComponent>
+    </Routine>
+    <Routine name="select">
+      <CodeComponent name="code">
+        <Param name="Begin Experiment" val="" valType="extendedCode" updates="constant"/>
+        <Param name="name" val="code" valType="code" updates="None"/>
+        <Param name="Begin Routine" val="import random&#10;&#10;repsLeft = 0&#10;repsRight = 0&#10;preTargetDuration = random.uniform(0.5, 3)&#10;&#10;if random.randint(0, 1) == 0:&#10;    repsLeft = 1&#10;    repsRight = 0&#10;else:&#10;    repsLeft = 0&#10;    repsRight = 1" valType="extendedCode" updates="constant"/>
+        <Param name="End Routine" val="" valType="extendedCode" updates="constant"/>
+        <Param name="End Experiment" val="" valType="extendedCode" updates="constant"/>
+        <Param name="Each Frame" val="" valType="extendedCode" updates="constant"/>
+      </CodeComponent>
+    </Routine>
     <Routine name="left">
       <ImageComponent name="left_neutral">
         <Param name="opacity" val="1" valType="code" updates="constant"/>
@@ -221,38 +253,6 @@
         <Param name="End Experiment" val="" valType="extendedCode" updates="constant"/>
         <Param name="Each Frame" val="" valType="extendedCode" updates="constant"/>
       </CodeComponent>
-    </Routine>
-    <Routine name="select">
-      <CodeComponent name="code">
-        <Param name="Begin Experiment" val="" valType="extendedCode" updates="constant"/>
-        <Param name="name" val="code" valType="code" updates="None"/>
-        <Param name="Begin Routine" val="import random&#10;&#10;repsLeft = 0&#10;repsRight = 0&#10;preTargetDuration = random.uniform(0.5, 3)&#10;&#10;if random.randint(0, 1) == 0:&#10;    repsLeft = 1&#10;    repsRight = 0&#10;else:&#10;    repsLeft = 0&#10;    repsRight = 1" valType="extendedCode" updates="constant"/>
-        <Param name="End Routine" val="" valType="extendedCode" updates="constant"/>
-        <Param name="End Experiment" val="" valType="extendedCode" updates="constant"/>
-        <Param name="Each Frame" val="" valType="extendedCode" updates="constant"/>
-      </CodeComponent>
-    </Routine>
-    <Routine name="instructions">
-      <TextComponent name="welcome_text">
-        <Param name="opacity" val="1" valType="code" updates="constant"/>
-        <Param name="colorSpace" val="rgb" valType="str" updates="constant"/>
-        <Param name="name" val="welcome_text" valType="code" updates="None"/>
-        <Param name="wrapWidth" val="" valType="code" updates="constant"/>
-        <Param name="color" val="white" valType="str" updates="constant"/>
-        <Param name="text" val="DOE DINGEN&#10;&#10;EN DOE ZE GOED GVD" valType="str" updates="constant"/>
-        <Param name="stopVal" val="5" valType="code" updates="constant"/>
-        <Param name="durationEstim" val="" valType="code" updates="None"/>
-        <Param name="pos" val="[0, 0]" valType="code" updates="constant"/>
-        <Param name="flip" val="" valType="str" updates="constant"/>
-        <Param name="startEstim" val="" valType="code" updates="None"/>
-        <Param name="units" val="from exp settings" valType="str" updates="None"/>
-        <Param name="startType" val="time (s)" valType="str" updates="None"/>
-        <Param name="ori" val="0" valType="code" updates="constant"/>
-        <Param name="stopType" val="duration (s)" valType="str" updates="None"/>
-        <Param name="startVal" val="0.0" valType="code" updates="None"/>
-        <Param name="font" val="Arial" valType="str" updates="constant"/>
-        <Param name="letterHeight" val="0.1" valType="code" updates="constant"/>
-      </TextComponent>
     </Routine>
   </Routines>
   <Flow>

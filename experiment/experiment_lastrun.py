@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy2 Experiment Builder (v1.81.03), Thu 11 Dec 2014 03:11:45 PM CET
+This experiment was created using PsychoPy2 Experiment Builder (v1.81.03), Thu 11 Dec 2014 03:52:31 PM CET
 If you publish work using this script please cite the relevant PsychoPy publications
   Peirce, JW (2007) PsychoPy - Psychophysics software in Python. Journal of Neuroscience Methods, 162(1-2), 8-13.
   Peirce, JW (2009) Generating stimuli for neuroscience using PsychoPy. Frontiers in Neuroinformatics, 2:10. doi: 10.3389/neuro.11.010.2008
@@ -95,7 +95,7 @@ target_left = visual.ImageStim(win=win, name='target_left',
 # Initialize components for Routine "left_feedback"
 left_feedbackClock = core.Clock()
 feedback_left = visual.ImageStim(win=win, name='feedback_left',
-    image=u'../stimuli/neutral_after.jpg', mask=None,
+    image='../stimuli/neutral_after.jpg', mask=None,
     ori=0, pos=[0, 0], size=[0.5, 0.5],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
@@ -128,7 +128,7 @@ target_right = visual.ImageStim(win=win, name='target_right',
 # Initialize components for Routine "right_feedback"
 right_feedbackClock = core.Clock()
 feedback_right = visual.ImageStim(win=win, name='feedback_right',
-    image=u'../stimuli/neutral_after.jpg', mask=None,
+    image='../stimuli/neutral_after.jpg', mask=None,
     ori=0, pos=[0, 0], size=[0.5, 0.5],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
