@@ -170,6 +170,46 @@
         <Param name="size" val="[2,2]" valType="code" updates="constant"/>
       </ImageComponent>
     </Routine>
+    <Routine name="instructions">
+      <TextComponent name="welcome_text">
+        <Param name="opacity" val="1" valType="code" updates="constant"/>
+        <Param name="colorSpace" val="rgb" valType="str" updates="constant"/>
+        <Param name="name" val="welcome_text" valType="code" updates="None"/>
+        <Param name="wrapWidth" val="" valType="code" updates="constant"/>
+        <Param name="color" val="white" valType="str" updates="constant"/>
+        <Param name="text" val="DOE DINGEN" valType="str" updates="constant"/>
+        <Param name="stopVal" val="5" valType="code" updates="constant"/>
+        <Param name="durationEstim" val="" valType="code" updates="None"/>
+        <Param name="pos" val="[0, 0]" valType="code" updates="constant"/>
+        <Param name="flip" val="" valType="str" updates="constant"/>
+        <Param name="startEstim" val="" valType="code" updates="None"/>
+        <Param name="units" val="from exp settings" valType="str" updates="None"/>
+        <Param name="startType" val="time (s)" valType="str" updates="None"/>
+        <Param name="ori" val="0" valType="code" updates="constant"/>
+        <Param name="stopType" val="duration (s)" valType="str" updates="None"/>
+        <Param name="startVal" val="0.0" valType="code" updates="None"/>
+        <Param name="font" val="Arial" valType="str" updates="constant"/>
+        <Param name="letterHeight" val="0.1" valType="code" updates="constant"/>
+      </TextComponent>
+      <CodeComponent name="connectToBuffer">
+        <Param name="Begin Experiment" val="# buffer_bci Handling the requered imports&#10;import sys&#10;import time&#10;sys.path.append(&quot;../../Practical/buffer_bci/dataAcq/buffer/python/&quot;)&#10;from FieldTrip import Client, Event&#10;from time import sleep&#10;&#10;# buffer_bci Connecting to the buffer.&#10;host = 'localhost'&#10;port = 1972&#10;ftc = Client()&#10;hdr = None;&#10;while hdr is None :&#10;    print 'Trying to connect to buffer on %s:%i ...'%(host,port)&#10;    try:&#10;        ftc.connect(host, port)&#10;        print '\nConnected - trying to read header...'&#10;        hdr = ftc.getHeader()&#10;    except IOError:&#10;        pass&#10;    if hdr is None:&#10;        print 'Invalid Header... waiting'&#10;        time.sleep(1)&#10;    else:&#10;        print hdr&#10;        print hdr.labels&#10;# buffer_bci Defining a usefull helper functions&#10;&#10;def sendEvent(eventType, eventValue):&#10;    e = Event()&#10;    e.type = eventType&#10;    e.value = eventValue&#10;    ftc.putEvents(e)&#10;    &#10;procnEvents=0&#10;def waitnewevents(evtype, timeout_ms=1000,verbose = True):      &#10;    &quot;&quot;&quot;Function that blocks until a certain type of event is recieved. evttype defines what&#10;    event termintes the block.  Only the first such matching event is returned&#10;    &quot;&quot;&quot;    &#10;    global ftc, nEvents, nSamples&#10;    global procnEvents&#10;    start = time.time()&#10;    nEvents,nSamples=ftc.poll()&#10;    elapsed_ms = 0&#10;    &#10;    if verbose:&#10;        print &quot;Waiting for event &quot; + str(evtype) + &quot; with timeout_ms &quot; + str(timeout_ms)&#10;    &#10;    evt=None&#10;    while elapsed_ms &lt; timeout_ms and evt is None:&#10;        nSamples, nEvents2 = ftc.wait(-1,procnEvents, timeout_ms - elapsed_ms)     &#10;&#10;        if nEvents != nEvents2: # new events to process&#10;            procnEvents = nEvents2&#10;            evts = ftc.getEvents((nEvents, nEvents2 -1))&#10;            for ev in evts:&#10;                if ev.type == evtype:&#10;                    evt = ev&#10;                    break&#10;        &#10;        elapsed_ms = (time.time() - start)*1000&#10;        nEvents = nEvents2            &#10;    return evt" valType="extendedCode" updates="constant"/>
+        <Param name="name" val="connectToBuffer" valType="code" updates="None"/>
+        <Param name="Begin Routine" val="" valType="extendedCode" updates="constant"/>
+        <Param name="End Routine" val="" valType="extendedCode" updates="constant"/>
+        <Param name="End Experiment" val="" valType="extendedCode" updates="constant"/>
+        <Param name="Each Frame" val="" valType="extendedCode" updates="constant"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="select">
+      <CodeComponent name="code">
+        <Param name="Begin Experiment" val="" valType="extendedCode" updates="constant"/>
+        <Param name="name" val="code" valType="code" updates="None"/>
+        <Param name="Begin Routine" val="import random&#10;from threading import Timer&#10;repsLeft = 0&#10;repsRight = 0&#10;preTargetDuration = random.uniform(0.5, 3)&#10;&#10;if random.randint(0, 1) == 0:&#10;    repsLeft = 1&#10;    repsRight = 0&#10;else:&#10;    repsLeft = 0&#10;    repsRight = 1&#10;&#10;side = 'left' if repsLeft else 'right'&#10;&#10;def send():&#10;    sendEvent('attention', side)&#10;&#10;Timer(2, send).start()" valType="extendedCode" updates="constant"/>
+        <Param name="End Routine" val="" valType="extendedCode" updates="constant"/>
+        <Param name="End Experiment" val="" valType="extendedCode" updates="constant"/>
+        <Param name="Each Frame" val="" valType="extendedCode" updates="constant"/>
+      </CodeComponent>
+    </Routine>
     <Routine name="left">
       <ImageComponent name="left_neutral">
         <Param name="opacity" val="1" valType="code" updates="constant"/>
@@ -217,46 +257,6 @@
         <Param name="Begin Experiment" val="" valType="extendedCode" updates="constant"/>
         <Param name="name" val="code_2" valType="code" updates="None"/>
         <Param name="Begin Routine" val="targets = ['color', 'size', 'shift', 'shift2']&#10;index = random.randint(0, 3)&#10;&#10;imageTargetPath = '../stimuli/left' + targets[index] + '.jpg'" valType="extendedCode" updates="constant"/>
-        <Param name="End Routine" val="" valType="extendedCode" updates="constant"/>
-        <Param name="End Experiment" val="" valType="extendedCode" updates="constant"/>
-        <Param name="Each Frame" val="" valType="extendedCode" updates="constant"/>
-      </CodeComponent>
-    </Routine>
-    <Routine name="select">
-      <CodeComponent name="code">
-        <Param name="Begin Experiment" val="" valType="extendedCode" updates="constant"/>
-        <Param name="name" val="code" valType="code" updates="None"/>
-        <Param name="Begin Routine" val="import random&#10;&#10;repsLeft = 0&#10;repsRight = 0&#10;preTargetDuration = random.uniform(0.5, 3)&#10;&#10;if random.randint(0, 1) == 0:&#10;    repsLeft = 1&#10;    repsRight = 0&#10;else:&#10;    repsLeft = 0&#10;    repsRight = 1" valType="extendedCode" updates="constant"/>
-        <Param name="End Routine" val="" valType="extendedCode" updates="constant"/>
-        <Param name="End Experiment" val="" valType="extendedCode" updates="constant"/>
-        <Param name="Each Frame" val="" valType="extendedCode" updates="constant"/>
-      </CodeComponent>
-    </Routine>
-    <Routine name="instructions">
-      <TextComponent name="welcome_text">
-        <Param name="opacity" val="1" valType="code" updates="constant"/>
-        <Param name="colorSpace" val="rgb" valType="str" updates="constant"/>
-        <Param name="name" val="welcome_text" valType="code" updates="None"/>
-        <Param name="wrapWidth" val="" valType="code" updates="constant"/>
-        <Param name="color" val="white" valType="str" updates="constant"/>
-        <Param name="text" val="DOE DINGEN" valType="str" updates="constant"/>
-        <Param name="stopVal" val="5" valType="code" updates="constant"/>
-        <Param name="durationEstim" val="" valType="code" updates="None"/>
-        <Param name="pos" val="[0, 0]" valType="code" updates="constant"/>
-        <Param name="flip" val="" valType="str" updates="constant"/>
-        <Param name="startEstim" val="" valType="code" updates="None"/>
-        <Param name="units" val="from exp settings" valType="str" updates="None"/>
-        <Param name="startType" val="time (s)" valType="str" updates="None"/>
-        <Param name="ori" val="0" valType="code" updates="constant"/>
-        <Param name="stopType" val="duration (s)" valType="str" updates="None"/>
-        <Param name="startVal" val="0.0" valType="code" updates="None"/>
-        <Param name="font" val="Arial" valType="str" updates="constant"/>
-        <Param name="letterHeight" val="0.1" valType="code" updates="constant"/>
-      </TextComponent>
-      <CodeComponent name="connectToBuffer">
-        <Param name="Begin Experiment" val="# buffer_bci Handling the requered imports&#10;import sys&#10;import time&#10;sys.path.append(&quot;../../Practical/buffer_bci/dataAcq/buffer/python/&quot;)&#10;from FieldTrip import Client, Event&#10;from time import sleep&#10;&#10;# buffer_bci Connecting to the buffer.&#10;host = 'localhost'&#10;port = 1972&#10;ftc = Client()&#10;hdr = None;&#10;while hdr is None :&#10;    print 'Trying to connect to buffer on %s:%i ...'%(host,port)&#10;    try:&#10;        ftc.connect(host, port)&#10;        print '\nConnected - trying to read header...'&#10;        hdr = ftc.getHeader()&#10;    except IOError:&#10;        pass&#10;    if hdr is None:&#10;        print 'Invalid Header... waiting'&#10;        time.sleep(1)&#10;    else:&#10;        print hdr&#10;        print hdr.labels&#10;# buffer_bci Defining a usefull helper functions&#10;&#10;def sendEvent(eventType, eventValue):&#10;    e = Event()&#10;    e.type = eventType&#10;    e.value = eventValue&#10;    ftc.putEvents(e)&#10;    &#10;procnEvents=0&#10;def waitnewevents(evtype, timeout_ms=1000,verbose = True):      &#10;    &quot;&quot;&quot;Function that blocks until a certain type of event is recieved. evttype defines what&#10;    event termintes the block.  Only the first such matching event is returned&#10;    &quot;&quot;&quot;    &#10;    global ftc, nEvents, nSamples&#10;    global procnEvents&#10;    start = time.time()&#10;    nEvents,nSamples=ftc.poll()&#10;    elapsed_ms = 0&#10;    &#10;    if verbose:&#10;        print &quot;Waiting for event &quot; + str(evtype) + &quot; with timeout_ms &quot; + str(timeout_ms)&#10;    &#10;    evt=None&#10;    while elapsed_ms &lt; timeout_ms and evt is None:&#10;        nSamples, nEvents2 = ftc.wait(-1,procnEvents, timeout_ms - elapsed_ms)     &#10;&#10;        if nEvents != nEvents2: # new events to process&#10;            procnEvents = nEvents2&#10;            evts = ftc.getEvents((nEvents, nEvents2 -1))&#10;            for ev in evts:&#10;                if ev.type == evtype:&#10;                    evt = ev&#10;                    break&#10;        &#10;        elapsed_ms = (time.time() - start)*1000&#10;        nEvents = nEvents2            &#10;    return evt" valType="extendedCode" updates="constant"/>
-        <Param name="name" val="connectToBuffer" valType="code" updates="None"/>
-        <Param name="Begin Routine" val="" valType="extendedCode" updates="constant"/>
         <Param name="End Routine" val="" valType="extendedCode" updates="constant"/>
         <Param name="End Experiment" val="" valType="extendedCode" updates="constant"/>
         <Param name="Each Frame" val="" valType="extendedCode" updates="constant"/>
