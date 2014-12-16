@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy2 Experiment Builder (v1.81.03), Fri 12 Dec 2014 02:54:05 PM CET
+This experiment was created using PsychoPy2 Experiment Builder (v1.81.03), december 16, 2014, at 20:24
 If you publish work using this script please cite the relevant PsychoPy publications
   Peirce, JW (2007) PsychoPy - Psychophysics software in Python. Journal of Neuroscience Methods, 162(1-2), 8-13.
   Peirce, JW (2009) Generating stimuli for neuroscience using PsychoPy. Frontiers in Neuroinformatics, 2:10. doi: 10.3389/neuro.11.010.2008
@@ -33,7 +33,7 @@ filename = _thisDir + os.sep + u'data' + os.sep + '%s_%s' %(expInfo['participant
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath=u'/home/koen/BCI/IBCI/experiment/experiment.psyexp',
+    originPath='D:\\huiswerk\\IBCI\\experiment\\experiment.psyexp',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 #save a log file for detail verbose info
@@ -45,7 +45,7 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 # Start Code - component code to be run before the window creation
 
 # Setup the Window
-win = visual.Window(size=(1366, 768), fullscr=True, screen=0, allowGUI=False, allowStencil=False,
+win = visual.Window(size=(1920, 1080), fullscr=True, screen=0, allowGUI=False, allowStencil=False,
     monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
     blendMode='avg', useFBO=True,
     )
@@ -64,6 +64,7 @@ welcome_text = visual.TextStim(win=win, ori=0, name='welcome_text',
     color='white', colorSpace='rgb', opacity=1,
     depth=0.0)
 # buffer_bci Handling the requered imports
+'''
 import sys
 import time
 sys.path.append("../../Practical/buffer_bci/dataAcq/buffer/python/")
@@ -126,6 +127,7 @@ def waitnewevents(evtype, timeout_ms=1000,verbose = True):
         elapsed_ms = (time.time() - start)*1000
         nEvents = nEvents2            
     return evt
+'''
 
 # Initialize components for Routine "select"
 selectClock = core.Clock()
@@ -134,7 +136,7 @@ selectClock = core.Clock()
 # Initialize components for Routine "left"
 leftClock = core.Clock()
 left_neutral = visual.ImageStim(win=win, name='left_neutral',
-    image=u'../stimuli/neutral.jpg', mask=None,
+    image='../stimuli/neutral.jpg', mask=None,
     ori=0, pos=[0, 0], size=[2,2],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
@@ -158,7 +160,7 @@ target_left = visual.ImageStim(win=win, name='target_left',
 # Initialize components for Routine "left_feedback"
 left_feedbackClock = core.Clock()
 feedback_left = visual.ImageStim(win=win, name='feedback_left',
-    image=u'../stimuli/neutral_after.jpg', mask=None,
+    image='../stimuli/neutral_after.jpg', mask=None,
     ori=0, pos=[0, 0], size=[2,2],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
@@ -167,7 +169,7 @@ feedback_left = visual.ImageStim(win=win, name='feedback_left',
 # Initialize components for Routine "right"
 rightClock = core.Clock()
 right_base = visual.ImageStim(win=win, name='right_base',
-    image=u'../stimuli/neutral.jpg', mask=None,
+    image='../stimuli/neutral.jpg', mask=None,
     ori=0, pos=[0, 0], size=[2,2],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
@@ -191,7 +193,7 @@ target_right = visual.ImageStim(win=win, name='target_right',
 # Initialize components for Routine "right_feedback"
 right_feedbackClock = core.Clock()
 feedback_right = visual.ImageStim(win=win, name='feedback_right',
-    image=u'../stimuli/neutral_after.jpg', mask=None,
+    image='../stimuli/neutral_after.jpg', mask=None,
     ori=0, pos=[0, 0], size=[2,2],
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
@@ -229,7 +231,7 @@ while continueRoutine and routineTimer.getTime() > 0:
         welcome_text.tStart = t  # underestimates by a little under one frame
         welcome_text.frameNStart = frameN  # exact frame index
         welcome_text.setAutoDraw(True)
-    if welcome_text.status == STARTED and t >= (0.0 + (5-win.monitorFramePeriod*0.75)): #most of one frame period left
+    elif welcome_text.status == STARTED and t >= (0.0 + (5-win.monitorFramePeriod*0.75)): #most of one frame period left
         welcome_text.setAutoDraw(False)
     
     
@@ -259,7 +261,7 @@ for thisComponent in instructionsComponents:
 
 # set up handler to look after randomisation of conditions etc
 trials = data.TrialHandler(nReps=40, method='sequential', 
-    extraInfo=expInfo, originPath=u'/home/koen/BCI/IBCI/experiment/experiment.psyexp',
+    extraInfo=expInfo, originPath='D:\\huiswerk\\IBCI\\experiment\\experiment.psyexp',
     trialList=[None],
     seed=None, name='trials')
 thisExp.addLoop(trials)  # add the loop to the experiment
@@ -282,7 +284,7 @@ for thisTrial in trials:
     frameN = -1
     # update component parameters for each repeat
     import random
-    
+    from threading import Timer
     repsLeft = 0
     repsRight = 0
     preTargetDuration = random.uniform(0.5, 3)
@@ -293,6 +295,13 @@ for thisTrial in trials:
     else:
         repsLeft = 0
         repsRight = 1
+    
+    #side = 'left' if repsLeft else 'right'
+    
+    #def send():
+    #    sendEvent('attention', side)
+    
+    #Timer(2, send).start()
     # keep track of which components have finished
     selectComponents = []
     for thisComponent in selectComponents:
@@ -336,7 +345,7 @@ for thisTrial in trials:
     
     # set up handler to look after randomisation of conditions etc
     leftBlock = data.TrialHandler(nReps=repsLeft, method='sequential', 
-        extraInfo=expInfo, originPath=u'/home/koen/BCI/IBCI/experiment/experiment.psyexp',
+        extraInfo=expInfo, originPath='D:\\huiswerk\\IBCI\\experiment\\experiment.psyexp',
         trialList=[None],
         seed=None, name='leftBlock')
     thisExp.addLoop(leftBlock)  # add the loop to the experiment
@@ -384,7 +393,7 @@ for thisTrial in trials:
                 left_neutral.tStart = t  # underestimates by a little under one frame
                 left_neutral.frameNStart = frameN  # exact frame index
                 left_neutral.setAutoDraw(True)
-            if left_neutral.status == STARTED and t >= (2 + preTargetDuration-win.monitorFramePeriod*0.75): #most of one frame period left
+            elif left_neutral.status == STARTED and t >= (2 + preTargetDuration-win.monitorFramePeriod*0.75): #most of one frame period left
                 left_neutral.setAutoDraw(False)
             
             # *side_left* updates
@@ -393,7 +402,7 @@ for thisTrial in trials:
                 side_left.tStart = t  # underestimates by a little under one frame
                 side_left.frameNStart = frameN  # exact frame index
                 side_left.setAutoDraw(True)
-            if side_left.status == STARTED and t >= (1 + (0.5-win.monitorFramePeriod*0.75)): #most of one frame period left
+            elif side_left.status == STARTED and t >= (1 + (0.5-win.monitorFramePeriod*0.75)): #most of one frame period left
                 side_left.setAutoDraw(False)
             
             
@@ -451,7 +460,7 @@ for thisTrial in trials:
                 target_left.tStart = t  # underestimates by a little under one frame
                 target_left.frameNStart = frameN  # exact frame index
                 target_left.setAutoDraw(True)
-            if target_left.status == STARTED and t >= (0.0 + (0.05-win.monitorFramePeriod*0.75)): #most of one frame period left
+            elif target_left.status == STARTED and t >= (0.0 + (0.05-win.monitorFramePeriod*0.75)): #most of one frame period left
                 target_left.setAutoDraw(False)
             
             # check if all components have finished
@@ -504,7 +513,7 @@ for thisTrial in trials:
                 feedback_left.tStart = t  # underestimates by a little under one frame
                 feedback_left.frameNStart = frameN  # exact frame index
                 feedback_left.setAutoDraw(True)
-            if feedback_left.status == STARTED and t >= (0.0 + (1.0-win.monitorFramePeriod*0.75)): #most of one frame period left
+            elif feedback_left.status == STARTED and t >= (0.0 + (1.0-win.monitorFramePeriod*0.75)): #most of one frame period left
                 feedback_left.setAutoDraw(False)
             
             # check if all components have finished
@@ -536,7 +545,7 @@ for thisTrial in trials:
     
     # set up handler to look after randomisation of conditions etc
     rightBlock = data.TrialHandler(nReps=repsRight, method='sequential', 
-        extraInfo=expInfo, originPath=u'/home/koen/BCI/IBCI/experiment/experiment.psyexp',
+        extraInfo=expInfo, originPath='D:\\huiswerk\\IBCI\\experiment\\experiment.psyexp',
         trialList=[None],
         seed=None, name='rightBlock')
     thisExp.addLoop(rightBlock)  # add the loop to the experiment
@@ -584,7 +593,7 @@ for thisTrial in trials:
                 right_base.tStart = t  # underestimates by a little under one frame
                 right_base.frameNStart = frameN  # exact frame index
                 right_base.setAutoDraw(True)
-            if right_base.status == STARTED and t >= (0.0 + (2 + preTargetDuration-win.monitorFramePeriod*0.75)): #most of one frame period left
+            elif right_base.status == STARTED and t >= (0.0 + (2 + preTargetDuration-win.monitorFramePeriod*0.75)): #most of one frame period left
                 right_base.setAutoDraw(False)
             
             # *side_right* updates
@@ -593,7 +602,7 @@ for thisTrial in trials:
                 side_right.tStart = t  # underestimates by a little under one frame
                 side_right.frameNStart = frameN  # exact frame index
                 side_right.setAutoDraw(True)
-            if side_right.status == STARTED and t >= (1 + (0.5-win.monitorFramePeriod*0.75)): #most of one frame period left
+            elif side_right.status == STARTED and t >= (1 + (0.5-win.monitorFramePeriod*0.75)): #most of one frame period left
                 side_right.setAutoDraw(False)
             
             
@@ -651,7 +660,7 @@ for thisTrial in trials:
                 target_right.tStart = t  # underestimates by a little under one frame
                 target_right.frameNStart = frameN  # exact frame index
                 target_right.setAutoDraw(True)
-            if target_right.status == STARTED and t >= (0.0 + (0.05-win.monitorFramePeriod*0.75)): #most of one frame period left
+            elif target_right.status == STARTED and t >= (0.0 + (0.05-win.monitorFramePeriod*0.75)): #most of one frame period left
                 target_right.setAutoDraw(False)
             
             # check if all components have finished
@@ -704,7 +713,7 @@ for thisTrial in trials:
                 feedback_right.tStart = t  # underestimates by a little under one frame
                 feedback_right.frameNStart = frameN  # exact frame index
                 feedback_right.setAutoDraw(True)
-            if feedback_right.status == STARTED and t >= (0.0 + (1.0-win.monitorFramePeriod*0.75)): #most of one frame period left
+            elif feedback_right.status == STARTED and t >= (0.0 + (1.0-win.monitorFramePeriod*0.75)): #most of one frame period left
                 feedback_right.setAutoDraw(False)
             
             # check if all components have finished
