@@ -198,4 +198,8 @@ docs/_build/
 
 target/
 
+# Pyschopy
+
+experiment/experiment_lastrun.py
+
 !literature/*.pdf
