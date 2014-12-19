@@ -11,27 +11,94 @@
 
 \maketitle
 \begin{abstract}
-Abstract stub.
+	Inspired by P. Sauseng et al.\cite{Sauseng2005} we want to doe research on
+	the subject of $\alpha$-wave power in the visual cortex when covertly
+	attending to stimuli.
 \end{abstract}
 
 \section{Introduction}
-Inspired by P. Sauseng et al.\cite{Sauseng2005} we want to do research on the subject of $\alpha$-wave power in the visual cortex when covertly attending to stimuli. 
+\subsection{$\alpha$-waves}
+The $\alpha$-rhythm is an neural oscillation in the range of 8 - 12 Hz. 
+$\alpha$-waves are the strongest in subjects who rest and have their eyes
+closed. In humans the $\alpha$-waves are produced in the region of the visual
+cortex(V1) of the brain. 
+\subsection{Covert Attention}
+Covertly attending means that a subject is attending to something in the
+periphery of his visual field. This can be done by shifting your attention to
+an object which is not perceived by the macula lutea.
+\subsection{Lateralization}
+According to the literature *CITE*, the power of the $\alpha$-waves on the
+contralateral side of your vision in the V1 is lower than the power on the
+ipsilateral side. This due to the fact that the neurons on the ipsilateral side
+fire simultaneously in order to inhibit the input. This way the input on the
+contralateral side gets through, so you can selectively attend to a part in
+your visual field. % Perhaps need to be more scientific.
+\subsection{Electroencephalography}
+An electroencephalography (EEG) is a recording of electrical activity on the
+outside of the head. The brain activity has to be strong to be measured with an
+EEG since it records a lot of noise and the skull destoys a lot of the signal.
+As opposed to the poor spatial resolution, an EEG has a great temporal
+resolution. Moreover, an EEG has low costs in comparison to other brain
+activity recorders. 
+\subsection{How to Analyze}
+Since there is a lot of noise in EEG recordings, you can not analyze single
+recordings of EEG's. Therefor you want to use multiple recordings and average
+the noise out. However, since $\alpha$-power is not time-locked, you have to
+average in the frequency domain. If you then find variations in the power of
+the $\alpha$ you can analyze it.
 
-\section{Hypothesis}
-We expect that the power of the $\alpha$-waves is lower on the ipsilateral side of the brain in the visual cortex (V1) when subjects are covertly attending to a stimulus.
 
-\section{Experiment}
-% We present our subjects a slideshow in which they have to covertly attend to a feature on the right or left side of the presented slide. For each subject the feature is always on the same side of the slide in order to ensure that there are no attentional shifts. Subjects will be instructed to report as many of the features as possible afterwards. Because of this, they have to remember as much as possible of these features. While they are looking at the slideshow, we measure the brain activity in terms of power of the $\alpha$-waves in the V1 areas of their brain. The measuring is done with an EEG device.
+\section{Hypothesis} 
+We expect that the power of the $\alpha$-waves is lower on
+the ipsilateral side of the brain in the visual cortex (V1) when subjects are
+covertly attending to a stimulus.
 
-We present two slidesets per subject; one that gives target cues on the right side of the focus point and one that gives target cues on the left side of the focus point; this is to avoid attentional shifts. Subjects are asked to covertly attend to the cues and count the number of target cues presented. Target cues are green squares. The task is to count the number of green squares presented.
+\section{Experiment} 
+We present two slidesets per subject; one that presents
+target cues on the right side of the focus point and one that presents target
+cues on the left side of the focus point. Both slide sets contain an initial
+stimulus consisting of a fixation cross and two green squares presented on the
+left and right side. Both squares are presented in the lower half of the visual
+field, as Royendijk et al. (2013) have found to be the most efficient. After
+the initial stimulus has been presented for a random duration between 0.5 and 3
+seconds, a slight change in the square at the cued direction is presented for
+0.05 seconds. 
+The possible changes are: 
+\begin{itemize} 
+	\item A small shift downwards.  
+	\item A small shift outwards.  
+	\item A small increase in size.
+  \item A small change in color.  
+\end{itemize} In order to avoid attentional
+	shifts and to either side as well as attentional rythms we randomized the cue
+	direction for each epoch as well as the duration of the initial stimulus.
+	Stimuli on both sides are presented at 7\degree eccentricity from the
+	direction of the eyes, as Royendijk et al. (2013) have found to be sufficient
+	for 'difficult cues'.  Subjects are asked to covertly attend to the cues and
+	count the number of target cues presented. Target cues are a specific change
+	in the nature of the green square, namely colour change. 
 
-During the presentation of these cues, we measure the brain activity in terms of the power of the $\alpha$-waves in the V1 areas of their brain using EEG.
+During the presentation of these cues, we measure the brain activity in terms
+of the power of the $\alpha$-waves in the V1 areas of their brain using EEG.
 
 \section{Results}
 
-\section{Discussion}
+\section{Conclusion}
+As expected our hypotesis was true. When you are are covertly attending to a
+stimulus, the power of the $\alpha$-waves on the contralateral side of the V1
+are lower than the power on the ipsilateral side of the V1.
 
-\bibliographystyle{unsrt}
-\bibliography{references}
+\section{Discussion}
+\subsection{Trials}
+In order to find better results we should have tested on more subjects and we
+had run more trials on each subjects. However, do to limits in time we couldn't
+be we are sure that we, if given more time, could find better results.
+\subsection{Hardware}
+We used a mobita EEG recorder for our experiment, there was however another EEG
+recorder available which probally would have given us better results. However
+due to the time it cost setting that recorder up we chose for the mobita. We
+however argue that for this experiment the mobita was good enough.
+
+\bibliographystyle{unsrt} \bibliography{references}
 
 \end{document}
